@@ -1,17 +1,15 @@
-import React from 'react'
-import Layout from '@components/Layout'
+import React from 'react';
+import Layout from '@components/Layout';
 
-interface Props {
-
-}
+interface Props {}
 
 const HomePage = (props: Props) => {
-    return (
-        <div>
-            <Layout />
-            page
-        </div>
-    )
-}
+  return (
+    <div>
+      <Layout />
+      *** **page
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
