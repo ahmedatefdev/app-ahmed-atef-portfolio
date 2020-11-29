@@ -8,4 +8,5 @@ describe('index page', () => {
         const subject = mount(<HomePage />);
         expect(subject.find("Layout")).toHaveLength(1);
     });
+    
 });
