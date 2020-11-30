@@ -1,4 +1,12 @@
 {
   "presets": [["next/babel"]],
-  "plugins": [["module-resolver", { "root": ["./"], "alias": { "@components": "./src/components" } }]]
+  "plugins": [
+    ["module-resolver", { "root": ["./"], "alias": { "@components": "./src/components" } }],
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
+    ]
+  ]
 }

@@ -1,5 +1,6 @@
 module.exports = {
   roots: ['<rootDir>'],
+  transformIgnorePatterns: ['/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$'],
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   setupFiles: ['<rootDir>/config/setup.ts'],
   testPathIgnorePatterns: ['<rootDir>[/\\\\](build|docs|node_modules|.next)[/\\\\]'],

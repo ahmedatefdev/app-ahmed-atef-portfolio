@@ -1,0 +1,15 @@
+{
+  "utile": {
+    "header": "Error",
+    "default": "An error occurred, please try again",
+    "cart-warning": "Your shopping bag has been updated because some of the products you previously placed in it have been purchased by other customers"
+  },
+  "mongo": {
+    "E11000": "This email has already been used",
+    "ERR_CONNECTION_REFUSED": "there tempore error please try again later",
+    "ST1000": "no active order",
+    "ST2000": "please review the entered data",
+    "USER1000": "There is no account for this email",
+    "IT1000": "this size not available now"
+  }
+}
