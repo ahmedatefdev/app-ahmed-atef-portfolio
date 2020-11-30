@@ -3,6 +3,11 @@
   "contact-me": "Contact Me",
   "name": "name",
   "email": "email",
+  "subject": "Subject",
   "message": "message",
-  "resume": "resume"
+  "resume": "resume",
+  "name-error": "Name is required",
+  "email-error": "Email is required and must be valid",
+  "subject-error": "Subject is required",
+  "message-error": "Message is required "
 }

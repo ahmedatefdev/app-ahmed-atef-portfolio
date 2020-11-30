@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { HomeFilled, ProjectFilled, StarFilled } from '@ant-design/icons'
 import { IAppStyledProps } from '../../types/IAppStyledProps';
 import { spacing } from '../../styles/vars';
+import CustomButton from '../../Styled/CustomButton';
 const Ul = styled.ul<{ open: boolean }>`
   list-style: none;
   display: flex;
@@ -25,22 +26,11 @@ const Ul = styled.ul<{ open: boolean }>`
     height: 100vh;
     width: 300px;
     padding-top: 3.5rem;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
   }
 `;
 
-const CustomButton = styled(Button)`
-    background-color:transparent;
-    border:0;
-    color: ${({ theme }: IAppStyledProps) => theme.text};
-    padding:0;
-    padding-top:15px;
-    padding-left:1.2rem;
-    @media (max-width: 768px) {
-       padding-top:${spacing.normal};
-       font-size:1.2rem;
-    }
-`;
+
 const RightNav = ({ open }) => {
   return (
     <Ul open={open}>
