@@ -1,26 +1,12 @@
-import { AlignCenterOutlined } from '@ant-design/icons'
 import { Skeleton } from 'antd'
 import React from 'react'
-import styled from 'styled-components'
+import CardsContainer from '../../Styled/CardsContainer'
 import Container from '../../Styled/Container'
-import { size, spacing } from '../../styles/vars'
+import { TitleLoad } from '../../Styled/Titles'
 import ExpertiseCard from './ExpertiseCard'
 
 
 
-const CardsContainer = styled(Container)`
-    flex-direction:row;
-    flex-wrap: wrap;
-    background-color:transparent;
-    padding:${spacing.normal};
-
-    @media (max-width: ${size.tablet}){
-        padding: ${spacing.extraSmall};
-    }
-`
-const TitleLoad = styled.div`
-    width: 50%;
-`
 const LoadingExpertiseCards = () => {
     return (
         <Container>

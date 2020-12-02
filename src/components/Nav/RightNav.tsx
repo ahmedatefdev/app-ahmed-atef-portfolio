@@ -7,26 +7,31 @@ import { IAppStyledProps } from '../../types/IAppStyledProps';
 import { spacing } from '../../styles/vars';
 import CustomButton from '../../Styled/CustomButton';
 const Ul = styled.ul<{ open: boolean }>`
-  list-style: none;
   display: flex;
   flex-flow: row nowrap;
+
   z-index:2;
+  
+  list-style: none;
+  
   li {
-    /* padding: 18px 10px; */
     color: ${({ theme }: IAppStyledProps) => theme.text};
   }
+  
   @media (max-width: 768px) {
-    flex-flow: column nowrap;
-    /* background-color: #0D2538; */
-    background: ${({ theme }: IAppStyledProps) => theme.body};
-    position: fixed;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;
     right: 0;
-    height: 100vh;
     width: 300px;
+    height: 100vh;
+    flex-flow: column nowrap;
     padding-top: 3.5rem;
-    transition: transform 0.2s ease-in-out;
+    position: fixed;
+    
+    transition: all 0.2s ease-in-out;
+    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
+    visibility: ${({ open }) => open ? 'visible' : 'hidden'};
+    
+    background: ${({ theme }: IAppStyledProps) => theme.body};
   }
 `;
 

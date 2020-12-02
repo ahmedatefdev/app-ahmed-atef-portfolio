@@ -1,10 +1,18 @@
 import App, { AppProps } from 'next/app';
-import { useSelector } from "react-redux";
 import { ThemeProvider } from 'styled-components'
 import React from 'react';
-import { darkTheme, lightTheme } from '../styles/vars';
+import { darkTheme } from '../styles/vars';
 import 'antd/dist/antd.css';
-import NextI18NextInstance, { appWithTranslation } from '../../i18n';
+import { appWithTranslation } from '../../i18n';
+
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css'; 
+NProgress.configure({ showSpinner: false })
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 const MyApp = (props: AppProps) => {
   const { Component, pageProps } = props;

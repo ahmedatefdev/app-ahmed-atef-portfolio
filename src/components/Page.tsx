@@ -8,12 +8,8 @@ interface Props {
     description?: string
 }
 
-///// DONE: Add header
-/////    **       : Add Header
-/////    **       : add mete data
-/////    **       : add childe
 
-const Page = ({ children, title = 'Find The Pairs', description = "This is a game based on finding pairs of the same image for all pictures to win the game" }: Props) => {
+const Page = ({ children, title = 'Ahmed Atef Portfolio', description = "Ahmed atef portfolio made by next.js and antd with styled components" }: Props) => {
     return (
         <>
             <HEAD>
@@ -46,12 +42,7 @@ const Page = ({ children, title = 'Find The Pairs', description = "This is a gam
                 />
                 <link href="/favicons/site.webmanifest" rel="manifest" />
                 <link href="/favicons/favicon.ico" rel="shortcut icon" />
-                {/* <link
-                    as="style"
-                    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap"
-                    rel="preload"
-                /> */}
-                <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;1,300;1,400;1,600;1,700|Bitter|Roboto+Slab|Open+Sans:400,800&display=swap" rel="stylesheet"></link>
             </HEAD>
             <GlobalStyle />
             {children}

@@ -9,5 +9,6 @@
   "name-error": "Name is required",
   "email-error": "Email is required and must be valid",
   "subject-error": "Subject is required",
-  "message-error": "Message is required "
+  "message-error": "Message is required ",
+  "projects-lead": "A selection of my web development projects"
 }

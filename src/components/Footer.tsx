@@ -7,37 +7,46 @@ import { withTranslation } from "../../i18n"
 import { IAppStyledProps } from "../types/IAppStyledProps"
 
 const FooterContainer = styled.footer`
+    padding: 25px 10px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     background-color: ${({ theme }: IAppStyledProps) => theme.darkerAccent};
-    padding: 25px 10px;
 
     .social-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        justify-items: center;
-        align-items: center;
         max-width: 400px;
         margin-bottom: 10px;
 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        align-items: center;
+
         a {
-            font-size: 3rem;
-            color: ${({ theme }: IAppStyledProps) => theme.text};
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
-            display: inline-block;
             padding: 10px;
+
+            display: inline-block;
+            
+            text-decoration: none;
+            font-size: 3rem;
+            
+            transition: all 0.3s ease-in-out;
+
+            color: ${({ theme }: IAppStyledProps) => theme.text};
+            
             &:hover {
-                color: #1FB4FF;
+                color:  ${({ theme }: IAppStyledProps) => theme.accent};
             }
         }
     }
 
         p {
-            text-align: center;
             margin: 0 auto;
+            
+            text-align: center;
             color: ${({ theme }: IAppStyledProps) => theme.text};
         }
 `

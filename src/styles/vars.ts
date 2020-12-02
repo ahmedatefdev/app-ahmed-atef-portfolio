@@ -11,8 +11,9 @@ export const lightTheme = {
   text: "#363537",
   toggleBorder: "#FFF",
   gradient: "linear-gradient(#39598A, #79D7ED)",
-  accent: "#1890FF",
-  darkerAccent: "#005f8f",
+  accent: "#00C07F",
+  secHighlight: "#ff5335",
+  darkerAccent: "#005236",
   background: "#FAF9F9",
   backgroundSecondary: "#FBFBFB",
   border: "#dcdcdc",
@@ -22,7 +23,8 @@ export const lightTheme = {
     600: "#616E7C"
   },
   textVers: "#FFFFFF",
-  white: "#FFF"
+  white: "#FFF",
+  highlight: "#B7E4C7"
 };
 
 export const darkTheme = {
@@ -30,8 +32,9 @@ export const darkTheme = {
   text: "#dfe0d4",
   toggleBorder: "#6B8096",
   gradient: "linear-gradient(#091236, #1E215D)",
-  accent: "#1890FF",
-  darkerAccent: "#005f8f",
+  accent: "#00C07F",
+  darkerAccent: "#005236",
+  secHighlight: "#ff5335",
   background: "#050606",
   backgroundSecondary: "#040404",
   border: "#232323",
@@ -41,7 +44,8 @@ export const darkTheme = {
     600: "#9E9183"
   },
   textVers: "#000000",
-  white: "#FFF"
+  white: "#FFF",
+  highlight: "#B7E4C7"
 };
 
 export const size = {

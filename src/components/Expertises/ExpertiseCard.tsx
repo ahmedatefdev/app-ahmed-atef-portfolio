@@ -9,32 +9,37 @@ interface Props {
     loading: boolean
 }
 
-const CardContainer = styled.div<{ loading: boolean }>`
+const CardContainer = styled.div<{ loading: number }>`
+        width:${({ loading }) => loading ? "150px" : "fit-content"};
+        height: ${({ loading }) => loading ? "150px" : "fit-content"};
+        padding:${spacing.normal};
+
         display:flex;
         flex-direction:column;
         align-items:center;
         justify-content:center;
-        background-color:transparent;
         
+        background-color:transparent;
+
         transition: all 0.5s ease;
-        width:${({ loading }) => loading ? "150px" : "fit-content"};
-        height: ${({ loading }) => loading ? "150px" : "fit-content"};
+
         &:hover {
             transform: scale(1.5);
             opacity: 1;
             filter: brightness(110%) drop-shadow(6px 6px 6px ${({ theme }: IAppStyledProps) => theme.accent});
         }
 
-        padding:${spacing.normal};
         
         @media (max-width: ${size.tablet}) {
             padding:${spacing.extraSmall};
         }
 `
 const Icon = styled.img`
-        margin: .8rem;
         height: 4rem;
+        margin: .8rem;
+        
         opacity: 0.9;
+        
         filter: brightness(100%) drop-shadow(4px 4px 3px ${({ theme }: IAppStyledProps) => theme.accent});
 `
 const Title = styled.p`
@@ -42,7 +47,7 @@ const Title = styled.p`
 `
 const ExpertiseCard = ({ loading }: Props) => {
     return (
-        <CardContainer loading={loading}>
+        <CardContainer loading={loading ? 1 : 0}>
             {
                 loading ?
                     <Skeleton active loading={loading} paragraph={{ rows: 1 }} avatar />

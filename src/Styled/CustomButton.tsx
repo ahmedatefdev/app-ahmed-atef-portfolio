@@ -11,6 +11,9 @@ const CustomButton = styled(Button)`
     padding-top:15px;
     padding-left:1.2rem;
     transition: transform 0.1s ease-in-out;
+    &:hover, &:active, &:visited, &:focus{
+        color: ${({ theme }: IAppStyledProps) => theme.accent};
+    }
 
     @media (max-width: 768px) {
        padding-top:${spacing.normal};

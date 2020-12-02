@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '../components/Nav/Navbar';
-import Intro from '../components/intro';
-import Expertises from '../components/Experites/Expertises';
+import Intro from '../components/Intro/Intro';
+import Expertises from '../components/Expertises/Expertises';
 import Footer from '../components/Footer';
-import Contact from '../components/Contact';
+import Contact from '../components/Contact/Contact';
 
 interface Props { }
 

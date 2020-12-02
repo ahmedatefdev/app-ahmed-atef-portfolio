@@ -11,6 +11,8 @@ interface IAppTheme {
   grey: Object;
   textVers: string;
   white: string;
+  highlight: string;
+  secHighlight: string;
 }
 
 export interface IAppStyledProps {

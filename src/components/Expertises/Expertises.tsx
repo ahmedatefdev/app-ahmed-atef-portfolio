@@ -8,6 +8,8 @@ import { IAppStyledProps } from '../../types/IAppStyledProps'
 import { Switch } from 'antd'
 import ExpertiseCards from './ExpertiseCards'
 import LoadingExpertiseCards from './LoadingExpertiseCards'
+import { SectionTitle } from '../../Styled/Titles'
+import { FistCharacterToUppercase } from '../../helper'
 
 interface Props {
     t: TFunction
@@ -15,17 +17,20 @@ interface Props {
 
 const ExpertisesContainer = styled.div`
     width: 100%;
+    padding: ${spacing.extraLarge};
+
     display:flex;
     flex-direction:column;
     flex-wrap: nowrap;
     align-items:center;
     justify-content:center;
+    
     background-color: ${({ theme }: IAppStyledProps) => theme.darkerAccent};
+
     filter: drop-shadow(0px 0px 5px ${({ theme }: IAppStyledProps) => theme.accent});
-    padding: ${spacing.extraLarge};
 
     @media (max-width: ${size.tablet}){
-        padding: ${spacing.normal};
+        padding: ${spacing.normal} 0;
     }
 `
 
@@ -44,12 +49,12 @@ const Expertises = ({ t }: Props) => {
                 setLoading(!loading)
             }
             } />
-            <Title >{t("experiences")}</Title>
+            <SectionTitle >{FistCharacterToUppercase(t("experiences"))}</SectionTitle>
             {
-                loading ? Array.from({ length: 3 }).map((num, i) => <LoadingExpertiseCards />
+                loading ? Array.from({ length: 3 }).map((num, i) => <LoadingExpertiseCards key={i} />
                 ) :
                     cards.map(({ cards, stackTitle }, i) =>
-                        <ExpertiseCards cards={cards} loading={loading} stackTitle={stackTitle} />
+                        <ExpertiseCards cards={cards} loading={loading} stackTitle={stackTitle}  key={i}/>
                     )
             }
         </ExpertisesContainer>

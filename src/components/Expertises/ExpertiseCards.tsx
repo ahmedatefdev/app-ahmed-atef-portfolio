@@ -13,11 +13,13 @@ interface Props {
 
 
 const CardsContainer = styled(Container)`
-    flex-direction:row;
-    flex-wrap: wrap;
-    background-color:transparent;
     padding:${spacing.normal};
 
+    flex-direction:row;
+    flex-wrap: wrap;
+    
+    background-color:transparent;
+    
     @media (max-width: ${size.tablet}){
         padding: ${spacing.extraSmall};
     }
