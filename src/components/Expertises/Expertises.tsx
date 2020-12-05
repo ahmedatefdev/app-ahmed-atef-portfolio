@@ -29,7 +29,7 @@ const Expertises = ({ t }: Props) => {
                 loading ?
                     Array.from({ length: 3 }).map((num, i) => <LoadingExpertiseCards key={i} />)
                     :
-                    stacksWithExpertises.length <= 0 ?
+                    stacksWithExpertises === null || stacksWithExpertises === undefined || stacksWithExpertises.length <= 0 ?
                         <SectionTitle>Nothing to Show</SectionTitle>
                         :
                         stacksWithExpertises

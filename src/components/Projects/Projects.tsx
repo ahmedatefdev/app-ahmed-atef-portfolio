@@ -31,7 +31,7 @@ const Projects = ({ t }: Props) => {
                 loading ? Array.from({ length: 2 }).map((num, i) =>
                     <ProjectsStackLoading key={i} />
                 ) :
-                    stacksWithProjects?.length <= 0 ?
+                    stacksWithProjects === null || stacksWithProjects === undefined || stacksWithProjects.length <= 0 ?
                         <SectionTitle>Nothing to Show</SectionTitle> :
                         stacksWithProjects
                             .filter((stack) => stack.projects.length > 0)
