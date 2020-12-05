@@ -31,14 +31,16 @@ const Projects = ({ t }: Props) => {
                 loading ? Array.from({ length: 2 }).map((num, i) =>
                     <ProjectsStackLoading key={i} />
                 ) :
-                    stacksWithProjects
-                        .filter((stack) => stack.projects.length > 0)
-                        .map(({ projects, stackTranslations }, i) => {
-                            const stackTitle =
-                                stackTranslations.find((trans, i) => trans.language.short_name.toLowerCase() === i18n.language?.toLowerCase())
-                            return (<ProjectsStack projects={projects} stackTitle={stackTitle?.name || "Stack Title translation not found"} key={i} />)
-                        }
-                        )
+                    stacksWithProjects?.length <= 0 ?
+                        <SectionTitle>Nothing to Show</SectionTitle> :
+                        stacksWithProjects
+                            .filter((stack) => stack.projects.length > 0)
+                            .map(({ projects, stackTranslations }, i) => {
+                                const stackTitle =
+                                    stackTranslations.find((trans, i) => trans.language.short_name.toLowerCase() === i18n.language?.toLowerCase())
+                                return (<ProjectsStack projects={projects} stackTitle={stackTitle?.name || "Stack Title translation not found"} key={i} />)
+                            }
+                            )
             }
         </ProjectsContainer>
     )
