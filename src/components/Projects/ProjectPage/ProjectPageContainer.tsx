@@ -33,7 +33,8 @@ export const ProjectPageContainer = styled.div`
   .md-description{
     padding:${spacing.small};
     border-radius: 5px;
-
+    text-align:center;
+    
     background-blend-mode: multiply;
     background-image: url(${pat3}) ;
     background-color: ${({ theme }: IAppStyledProps) => theme.darkerAccent} ;

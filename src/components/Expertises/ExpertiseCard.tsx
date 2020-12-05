@@ -41,7 +41,8 @@ const Icon = styled.img`
         filter: brightness(100%) drop-shadow(4px 4px 3px ${({ theme }: IAppStyledProps) => theme.accent});
 `
 const Title = styled.p`
-      color: ${({ theme }: IAppStyledProps) => theme.text};
+    text-align:center;
+    color: ${({ theme }: IAppStyledProps) => theme.text};
 `
 const ExpertiseCard = ({ experience }: Props) => {
     console.log("🚀 ~ file: ExpertiseCard.tsx ~ line 52 ~ ExpertiseCard ~ experience", experience)

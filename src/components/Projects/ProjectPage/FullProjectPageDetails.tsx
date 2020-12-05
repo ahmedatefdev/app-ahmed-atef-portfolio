@@ -16,8 +16,8 @@ const FullProjectPageDetails = () => {
     const projectTranslation =
         projectTranslations.find((trans) => trans.language.short_name.toLowerCase() === i18n.language?.toLowerCase())
 
-    const siteUrl = useMemo(() => links.find((link) => link.name.includes("site")), links)
-    const codeUlr = useMemo(() => links.find((link) => link.name.includes("code")), links)
+    const siteUrl = useMemo(() => links.find((link) => link.name.toLowerCase().includes("site")), links)
+    const codeUlr = useMemo(() => links.find((link) => link.name.toLowerCase().includes("code")), links)
 
     return (
         <>
