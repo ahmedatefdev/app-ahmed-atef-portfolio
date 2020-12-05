@@ -84,3 +84,4 @@ package-lock.json
 .vercel
 *.map
 workbox*
+env/

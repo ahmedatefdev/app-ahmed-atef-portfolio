@@ -18,9 +18,12 @@ export const SecTitle = styled.h2`
 `
 export const TitleLoad = styled.div`
     width: 50%;
+    display:flexbox;
+    justify-content:center;
+    align-items: center;
 `
 export const SectionTitle = styled.h1`
-        font-size: 3.8em;
+        font-size: 3.5em;
         line-height: 90px;
         margin-bottom: 12px;
         text-transform:uppercase;

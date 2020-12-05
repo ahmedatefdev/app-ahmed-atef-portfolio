@@ -5,8 +5,8 @@ import React from 'react';
 import { FaCode, FaDesktop } from 'react-icons/fa';
 
 interface Props {
-    siteUrl: string
-    codeUlr: string
+  siteUrl: string
+  codeUlr: string
 }
 
 export const ProjectLinksContainer = styled.div`
@@ -62,26 +62,26 @@ export const ProjectLinksContainer = styled.div`
 `;
 
 const ProjectLinks = ({ siteUrl, codeUlr }: Props) => {
-    return (
-        <ProjectLinksContainer>
-            <div className="buttons">
-                {siteUrl && <a
-                    href={siteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <FaDesktop /> Visit Site
+  return (
+    <ProjectLinksContainer>
+      <div className="buttons">
+        {siteUrl && <a
+          href={siteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaDesktop /> Visit Site
                 </a>}
-                {codeUlr && <a
-                    href={codeUlr}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <FaCode /> View Code
+        {codeUlr && <a
+          href={codeUlr}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaCode /> View Code
                 </a>}
-            </div>
-        </ProjectLinksContainer>
-    )
+      </div>
+    </ProjectLinksContainer>
+  )
 }
 
 export default ProjectLinks

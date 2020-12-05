@@ -1,3 +1,5 @@
+import { IAppTheme } from "../types/IAppStyledProps";
+
 export const spacing = {
   extraSmall: "0.5em",
   large: "2em",
@@ -6,14 +8,14 @@ export const spacing = {
   extraLarge: "2.5em"
 };
 
-export const lightTheme = {
+export const lightTheme: IAppTheme = {
   body: "#E2E2E2",
   text: "#363537",
   toggleBorder: "#FFF",
   gradient: "linear-gradient(#39598A, #79D7ED)",
-  accent: "#00C07F",
+  darkerAccent: "#5CDB94",
   secHighlight: "#ff5335",
-  darkerAccent: "#005236",
+  accent: "#389583",
   background: "#FAF9F9",
   backgroundSecondary: "#FBFBFB",
   border: "#dcdcdc",
@@ -27,7 +29,7 @@ export const lightTheme = {
   highlight: "#B7E4C7"
 };
 
-export const darkTheme = {
+export const darkTheme: IAppTheme = {
   body: "#363537",
   text: "#dfe0d4",
   toggleBorder: "#6B8096",

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IAppStyledProps } from '../../types/IAppStyledProps';
 import Burger from './Burger';
 import logo from '../../img/logo.png'
+import ReactHeadroom from 'react-headroom'
 
 const Nav = styled.nav`
   width: 100%;
@@ -20,8 +21,8 @@ const Nav = styled.nav`
 
   .logo {
     padding: 10px 0;
-
-    transition: 0.2s;
+    filter: drop-shadow(0 0 0.5px);
+    transition:all 0.2s;
     cursor: pointer;
 
     img{
@@ -36,14 +37,16 @@ const Nav = styled.nav`
 
 const Navbar = () => {
   return (
-      <Nav>
-        <Link href="/">
-          <div className="logo" >
-            <img src={logo} />
-          </div>
-        </Link>
-        <Burger />
-      </Nav>
+    // <ReactHeadroom>
+    <Nav>
+      <Link href="/">
+        <div className="logo" >
+          <img src={logo} />
+        </div>
+      </Link>
+      <Burger />
+    </Nav>
+    // </ReactHeadroom>
   )
 }
 

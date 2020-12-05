@@ -5,10 +5,9 @@ module.exports = withPWA({
     dest: "public"
   },
   publicRuntimeConfig: {
-    defaultCardsCount: 10,
-    restTimeAfterWin: 3,
-    cardsByRowCount: 5,
-    allCardReveal: 5
+    API_URL: process.env.API_URL,
+    MAIL_HOST_URL: process.env.MAIL_HOST_URL,
+    RESUME_URL: process.env.RESUME_URL
   },
   webpack: function (config) {
     config.module.rules.push({

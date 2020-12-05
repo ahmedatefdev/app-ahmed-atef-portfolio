@@ -65,9 +65,9 @@ export const FormGroup = styled.div`
             position: absolute;
             pointer-events: none;
             top: 0;
+            left: 0;
             transform: translateY(30px);
             transition: all 0.2s ease-in-out;
-            left: 0px;
         }
 
         input:valid,

@@ -1,36 +1,31 @@
-import React from 'react'
-import styled from 'styled-components'
-import { size, spacing } from '../../../styles/vars'
-import { IAppStyledProps } from '../../../types/IAppStyledProps'
+import React, { useEffect } from 'react'
 import Article from './Article'
 import p1 from '../../../img/crack.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchArticlesAction } from '../../../redux/actions/actions'
+import IState from '../../../redux/types/IState'
+import { ArticlesContainer } from './styles/ArticlesContainer'
+import InfoCard from '../../../Styled/InfoCard'
 
-interface Props {
 
-}
 
-const ArticlesContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:space-around;
-    align-items:center;
-    margin:0;
-    padding:0 10%;
-    @media (max-width: ${size.tablet}){
-        flex-direction:column;
-        flex-wrap:nowrap;
-    }
- `
 // TODO: Add loading animations
-const Articles = (props: Props) => {
+const Articles = () => {
+    const dispatch = useDispatch()
+    const { blogArticlesLoading: loading, blogArticles } = useSelector((state: IState) => state.blog)
+    useEffect(() => {
+        dispatch(fetchArticlesAction())
+    }, [])
     return (
         <ArticlesContainer>
-            {Array.from({ length: 5 }).map((data, i) =>
-
-                <Article imgUrl={p1} url="/" title="new data" />
-            )
+            {!loading ?
+                blogArticles.map(({ cover_image, title, url }, i) =>
+                    <Article imgUrl={cover_image} url={url} title={title} key={i} />
+                )
+                :
+                Array.from({ length: 5 }).map((data, i) =>
+                    <InfoCard key={i} />
+                )
             }
         </ArticlesContainer>
     )

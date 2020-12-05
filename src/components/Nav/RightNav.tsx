@@ -1,61 +1,72 @@
 import React from 'react';
-import styled from 'styled-components';
 import Link from 'next/link'
-import { Button } from 'antd';
-import { HomeFilled, ProjectFilled, StarFilled } from '@ant-design/icons'
-import { IAppStyledProps } from '../../types/IAppStyledProps';
-import { spacing } from '../../styles/vars';
+import { HomeFilled, PaperClipOutlined, ProjectFilled, StarFilled } from '@ant-design/icons'
+import DarkModeToggle from "react-dark-mode-toggle";
 import CustomButton from '../../Styled/CustomButton';
-const Ul = styled.ul<{ open: boolean }>`
-  display: flex;
-  flex-flow: row nowrap;
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme } from '../../redux/actions/actions';
+import IState from '../../redux/types/IState';
+import { useCallback } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
+import { withTranslation } from '../../../i18n';
+import { Ul } from './Ul';
+import { WithTranslation } from 'next-i18next';
+import { FistCharacterToUppercase } from '../../helper';
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+interface Props extends WithTranslation {
+  open: boolean
+  closeNav: () => void
 
-  z-index:2;
-  
-  list-style: none;
-  
-  li {
-    color: ${({ theme }: IAppStyledProps) => theme.text};
-  }
-  
-  @media (max-width: 768px) {
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    flex-flow: column nowrap;
-    padding-top: 3.5rem;
-    position: fixed;
-    
-    transition: all 0.2s ease-in-out;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
-    visibility: ${({ open }) => open ? 'visible' : 'hidden'};
-    
-    background: ${({ theme }: IAppStyledProps) => theme.body};
-  }
-`;
+}
+const RightNav = ({ open, t, closeNav }: Props) => {
+  const dispatch = useDispatch()
+  const themeName = useSelector((state: IState) => state.theme.themeName)
+  const ThemeChanger = useCallback(() => { dispatch(setTheme()) }, [themeName])
 
-
-const RightNav = ({ open }) => {
   return (
-    <Ul open={open}>
+    <Ul open={open} onClick={closeNav}>
       <li>
         <Link href="/">
-          <CustomButton size="large" icon={<HomeFilled />} type="link" >Home</CustomButton>
+          <CustomButton size="large" icon={<HomeFilled />} type="link" >{FistCharacterToUppercase(t("home"))}</CustomButton>
         </Link>
       </li>
       <li>
         <Link href="/projects">
-          <CustomButton icon={<ProjectFilled />} type="link"  >Projects</CustomButton>
+          <CustomButton icon={<ProjectFilled />} type="link"  >{FistCharacterToUppercase(t("projects"))}</CustomButton>
         </Link>
       </li>
       <li>
         <Link href="/blog">
-          <CustomButton icon={<StarFilled />} type="link" >Blog</CustomButton>
+          <CustomButton icon={<StarFilled />} type="link" >{FistCharacterToUppercase(t("blog"))}</CustomButton>
         </Link>
+      </li>
+      <li>
+        <div className="resume">
+          <a
+            href={publicRuntimeConfig.RESUME_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <PaperClipOutlined /> {FistCharacterToUppercase(t("resume"))}
+          </a>
+        </div>
+      </li>
+      <li >
+        <div className="theme-toggle">
+          <DarkModeToggle
+            onChange={ThemeChanger}
+            checked={themeName === "dark"}
+            size={45} />
+        </div>
+      </li>
+      <li >
+        <div className="language-switcher">
+          <LanguageSwitcher />
+        </div>
       </li>
     </Ul >
   )
 }
 
-export default RightNav
+export default withTranslation(["pages-names", "utils"])(RightNav)

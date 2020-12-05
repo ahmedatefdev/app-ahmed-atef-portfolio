@@ -1,49 +1,47 @@
 import { Switch } from 'antd'
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { size, spacing } from '../../styles/vars'
-import { IAppStyledProps } from '../../types/IAppStyledProps'
+import { TFunction } from 'next-i18next'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { i18n, withTranslation } from '../../../i18n'
+import { FistCharacterToUppercase } from '../../helper'
+import { fetchProjectsAction } from '../../redux/actions/actions'
+import IState from '../../redux/types/IState'
+import { SectionTitle } from '../../Styled/Titles'
 import Project from './Project'
+import { ProjectsContainer } from './ProjectsContainer'
 import ProjectsStack from './ProjectsStack'
 import ProjectsStackLoading from './ProjectsStackLoading'
 
 interface Props {
-
+    t: TFunction
 }
 
-const ProjectsContainer = styled.div`
-    width: 100%;
-    display:flex;
-    flex-direction:column;
-    flex-wrap: nowrap;
-    align-items:center;
-    justify-content:center;
-    background-color: ${({ theme }: IAppStyledProps) => theme.body};
+const Projects = ({ t }: Props) => {
+    const dispatch = useDispatch()
+    const { stacksWithProjects, stacksWithProjectsLoading: loading } = useSelector((state: IState) => state.project)
 
-    @media (max-width: ${size.tablet}){
-        padding: ${spacing.normal};
-    }    
-`
-const Projects = ({ }: Props) => {
-    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        dispatch(fetchProjectsAction())
+    }, [])
 
-    const cards: { cards: number[], stackTitle: string }[] = [{ cards: [1, 1, 2], stackTitle: "tit1" }, { cards: [1, 2, 5, 22, 3], stackTitle: "tit1" },]
     return (
         <ProjectsContainer>
-            <Switch onChange={(e) => {
-                setLoading(!loading)
-            }
-            } />
+            <SectionTitle>{FistCharacterToUppercase(t("projects"))}</SectionTitle>
             {
-                loading ? Array.from({ length: 3 }).map((num, i) =>
+                loading ? Array.from({ length: 2 }).map((num, i) =>
                     <ProjectsStackLoading key={i} />
                 ) :
-                    cards.map(({ cards, stackTitle }, i) =>
-                        <ProjectsStack projects={cards} loading={loading} stackTitle={stackTitle} key={i} />
-                    )
+                    stacksWithProjects
+                        .filter((stack) => stack.projects.length > 0)
+                        .map(({ projects, stackTranslations }, i) => {
+                            const stackTitle =
+                                stackTranslations.find((trans, i) => trans.language.short_name.toLowerCase() === i18n.language?.toLowerCase())
+                            return (<ProjectsStack projects={projects} stackTitle={stackTitle?.name || "Stack Title translation not found"} key={i} />)
+                        }
+                        )
             }
         </ProjectsContainer>
     )
 }
 
-export default Projects
+export default withTranslation("pages-names")(Projects)

@@ -1,12 +1,14 @@
 {
   "presets": [["next/babel"]],
   "plugins": [
-    ["module-resolver", { "root": ["./"], "alias": { "@components": "./src/components" } }],
+    // ["babel-plugin-styled-components"],
+    [
+      "module-resolver",
+      { "root": ["./"], "alias": { "@components": "./src/components" } }
+    ],
     [
       "styled-components",
-      {
-        "ssr": true
-      }
+      { "ssr": true, "displayName": true, "preprocess": false }
     ]
   ]
 }

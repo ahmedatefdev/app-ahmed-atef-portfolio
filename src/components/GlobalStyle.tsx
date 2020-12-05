@@ -27,10 +27,12 @@ const GlobalStyle = createGlobalStyle`
             box-sizing: inherit;
         }
     }
-*{
-    margin:0em;
-}
+    *{
+        margin:0em;
+    }
     body {
+       
+        min-height:100vh;
         padding: 0;
         margin: 0;
         font-family: 'Nunito', sans-serif;
@@ -40,14 +42,11 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1.65;
         text-rendering: optimizeLegibility;
         /* Theme vars */
-        color: ${(props: IAppStyledProps) => {
-        return props.theme.text
-    }};
+        color: ${(props: IAppStyledProps) => { return props.theme.text }};
         background: ${({ theme }) => theme.body};
         transition: all 0.5s linear;
     }
 
-   
    
     table {  
         width: 100%; 
@@ -97,6 +96,8 @@ const GlobalStyle = createGlobalStyle`
     hr {
         margin: ${spacing.large} 0;
     }
+    
+   
 
     @media (min-width: 768px) {
         body {

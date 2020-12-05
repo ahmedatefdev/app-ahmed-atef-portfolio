@@ -1,6 +1,8 @@
 import React from 'react'
 import HEAD from 'next/head'
 import GlobalStyle from './GlobalStyle'
+import { BackTop } from 'antd'
+import { IoIosArrowDropupCircle } from 'react-icons/io'
 
 interface Props {
     children: any
@@ -46,6 +48,21 @@ const Page = ({ children, title = 'Ahmed Atef Portfolio', description = "Ahmed a
             </HEAD>
             <GlobalStyle />
             {children}
+            <BackTop>
+                <div style={{
+                    height: 50,
+                    width: 50,
+                    lineHeight: '40px',
+                    borderRadius: 30,
+                    backgroundColor: "black",
+                    color: '#fff',
+                    textAlign: 'center',
+                    fontSize: 14,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}><IoIosArrowDropupCircle size="30" /></div>
+            </BackTop>
         </>
     )
 }

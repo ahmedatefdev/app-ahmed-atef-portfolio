@@ -1,97 +1,81 @@
 import { TFunction, WithTranslation } from 'next-i18next'
-import React from 'react'
-import styled from 'styled-components'
-import { withTranslation } from '../../../i18n'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { i18n, withTranslation } from '../../../i18n'
 import { FistCharacterToUppercase } from '../../helper'
 import { FormError, FormGroup, RequiredStar } from '../../Styled/Form'
-import { size, spacing } from '../../styles/vars'
-import { IAppStyledProps } from '../../types/IAppStyledProps'
-import pattern from '../../img/pattern11.png'
-
-
-const ContactFormContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: 20px 40px;
-        border-radius: 5px;
-        background-blend-mode: multiply;
-        background-image: url(${pattern});
-        background-color: ${({ theme }: IAppStyledProps) => theme.darkerAccent};
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-        @media (max-width: ${size.tablet}) {
-            padding: 20px ${spacing.extraSmall};
-        }
-
-        p {
-            font-size: 1.3em;
-        }
-
-
-
-    button,
-    input[type="reset"] {
-        background-color:  ${({ theme }: IAppStyledProps) => theme.accent};
-        border: 2px solid  ${({ theme }: IAppStyledProps) => theme.accent};
-        border-radius: 2px;
-        box-sizing: border-box;
-        color:  ${({ theme }: IAppStyledProps) => theme.text};
-        cursor: pointer;
-        font-size: 16px;
-        padding: 15px 0;
-        margin-top: 15px;
-        width: 100%;
-        transition: all 0.2s ease-in-out;
-
-        &:hover {
-            filter:brightness(120%) contrast(120%);
-        }
-    }
-`
+import { CheckFormData } from './CheckFormData'
+import { ContactFormContainer } from './ContactFormContainer'
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 
 interface Props extends WithTranslation {
     t: TFunction
+    submitForm: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-const ContactForm = ({ t }: Props) => {
+export const errorsDefault = {
+    name: false,
+    email: false,
+    subject: false,
+    message: false,
+}
+const ContactForm = ({ t, submitForm }: Props) => {
+    const [error, setError] = useState(errorsDefault)
+    const [isRight, setIsRight] = useState(i18n?.language === "ar" || false)
+    useEffect(() => { setIsRight(i18n?.language === "ar" || false) }, [i18n, i18n.language])
+
+
+    const CheckData = useCallback(
+        (ev: React.FormEvent<HTMLFormElement>) => {
+            ev.preventDefault()
+            const newErrors = CheckFormData(ev.currentTarget)
+            if (!Object.values(newErrors).some((error) => error)) submitForm(ev)
+            setError(newErrors)
+        }, [])
+
+    const labelStyle = useMemo(() => ({
+        left: isRight ? "unset" : 0,
+        right: isRight ? 0 : "unset"
+    }), [isRight])
+
     return (
         <ContactFormContainer>
             <form
-                method="post"
-                netlify-honeypot="bot-field"
-                data-netlify="true"
+                onSubmit={CheckData}
+                action={publicRuntimeConfig.MAIL_HOST_URL}
+                method="POST"
                 name="contact"
             >
                 <input type="hidden" name="bot-field" />
                 <input type="hidden" name="form-name" value="contact" />
-                <FormGroup>
-                    <input type="text" name="name" id="name" required />
-                    <label><RequiredStar />{FistCharacterToUppercase(t("name"))}</label>
-                    <FormError visible={true}>{t("name-error")}</FormError>
+                <FormGroup >
+                    <input type="text" name="name" id="name" />
+                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("name"))}</label>
+                    <FormError visible={error.name}>{t("name-error")}</FormError>
                 </FormGroup>
-                <FormGroup>
-                    <input type="text" name="email" id="email" required />
-                    <label><RequiredStar />{FistCharacterToUppercase(t("email"))}</label>
-                    <FormError visible={true}>{t("email-error")}</FormError>
+                <FormGroup >
+                    <input type="text" name="email" id="email" />
+                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("email"))}</label>
+                    <FormError visible={error.email}>{t("email-error")}</FormError>
                 </FormGroup>
-                <FormGroup>
-                    <input type="text" name="subject" id="subject" required />
-                    <label><RequiredStar />{FistCharacterToUppercase(t("subject"))}</label>
-                    <FormError visible={true}>{t("subject-error")}</FormError>
+                <FormGroup >
+                    <input type="text" name="subject" id="subject" />
+                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("subject"))}</label>
+                    <FormError visible={error.subject}>{t("subject-error")}</FormError>
                 </FormGroup>
-                <FormGroup>
-                    <textarea name="message" id="message" rows={5} required />
-                    <label><RequiredStar />{FistCharacterToUppercase(t("message"))}</label>
-                    <FormError visible={true}>{t("message-error")}</FormError>
+                <FormGroup >
+                    <textarea name="message" id="message" rows={5} />
+                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("message"))}</label>
+                    <FormError visible={error.message}>{t("message-error")}</FormError>
                 </FormGroup>
-                <button type="submit">Send</button>
-                <input type="reset" value="Clear" />
+                <button type="submit">{t("sent")}</button>
+                <input type="reset" value={t("clear") as string} />
             </form>
         </ContactFormContainer>
 
     )
 }
 
-export default withTranslation(["utils", "pages-names"])(ContactForm)
+export default withTranslation(["utils"])(ContactForm)
+

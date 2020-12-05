@@ -1,4 +1,4 @@
-interface IAppTheme {
+export interface IAppTheme {
   body: string;
   text: string;
   toggleBorder: string;

@@ -24,13 +24,13 @@ const IntroTextContainer = styled.div`
       }
 
       h1 {
-        font-size: 4.5em;
+        font-size: 3.5em;
         line-height: 90px;
         margin-bottom: 12px;
         color: ${({ theme }: IAppStyledProps) => theme.accent};
 
         @media  (max-width: ${size.tablet}){
-          font-size: 3em;
+          font-size: 2.5em;
           margin-bottom: 0;
           line-height: 75px;
         }
@@ -42,7 +42,7 @@ const IntroTextContainer = styled.div`
       }
 
       h2 {
-        font-size: 2.4em;
+        font-size: 2.0em;
         margin-bottom: 0.2em;
 
 
@@ -58,17 +58,17 @@ const IntroTextContainer = styled.div`
 
 
 interface Props {
-    t: TFunction
+  t: TFunction
 }
 
 
 const IntroText = ({ t }: Props) => {
-    return (
-        <IntroTextContainer>
-            <h1>{t("name")}</h1>
-            <h2>{t("developer")}</h2>
-        </IntroTextContainer>
-    )
+  return (
+    <IntroTextContainer>
+      <h1>{t("name")}</h1>
+      <h2>{t("developer")}</h2>
+    </IntroTextContainer>
+  )
 }
 
 export default withTranslation("intro")(IntroText)

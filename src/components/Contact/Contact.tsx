@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { IAppStyledProps } from '../../types/IAppStyledProps'
-import { withTranslation } from '../../../i18n'
-import { TFunction } from 'next-i18next'
-import { FistCharacterToUppercase } from '../../helper'
+import { TFunction, WithTranslation } from 'next-i18next'
 import { SectionTitle } from '../../Styled/Titles'
 import ContactForm from './ContactForm'
-interface Props {
-    t: TFunction
+import { message } from 'antd'
+import axios from '../../helper/axios'
+import { Method } from 'axios'
+import { withTranslation } from '../../../i18n'
+interface Props extends WithTranslation {
 }
 
 const ContactContainer = styled.section`
@@ -34,16 +35,39 @@ const ContactContainer = styled.section`
 `
 
 const Contact = ({ t }: Props) => {
+
+    const submitForm =
+        useCallback(
+            (ev: React.FormEvent<HTMLFormElement>) => {
+                ev.preventDefault()
+                const form = ev.currentTarget
+                const data = new FormData(form)
+                axios.request({
+                    method: form.method as Method,
+                    url: form.action,
+                    data: data
+                })
+                    .then((val) => {
+                        console.log("🚀 submitForm ~ val", val)
+                        form.reset()
+                        message.info(t("message-sent"));
+                    })
+                    .catch((val) => {
+                        console.error("🚀 ~ submitForm val", val)
+                        message.info(t("message-not-sent"));
+                    }).finally(() => { console.log("try to send mail") })
+            }, [])
+
     return (
         <ContactContainer>
             <div className="container">
                 <div className="contact-text">
-                    <SectionTitle>{FistCharacterToUppercase(t("contact"))}</SectionTitle>
+                    <SectionTitle>{t("contact-me")}</SectionTitle>
                 </div>
-                <ContactForm />
+                <ContactForm submitForm={submitForm} />
             </div>
         </ContactContainer >
     )
 }
 
-export default withTranslation(["utils", "pages-names"])(Contact)
+export default withTranslation("utils")(Contact)

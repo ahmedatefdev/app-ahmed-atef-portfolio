@@ -1,6 +1,5 @@
 {
   "learn-more": "learn more...",
-  "contact-me": "Contact Me",
   "name": "name",
   "email": "email",
   "subject": "Subject",
@@ -10,5 +9,11 @@
   "email-error": "Email is required and must be valid",
   "subject-error": "Subject is required",
   "message-error": "Message is required ",
-  "projects-lead": "A selection of my web development projects"
+  "projects-lead": "A selection of my web development projects",
+  "built-using": "Built Using",
+  "message-sent": "Sent successfully",
+  "message-not-sent": "sending failed",
+  "contact-me": "Contact Me",
+  "sent": "Send",
+  "clear": "Clear"
 }

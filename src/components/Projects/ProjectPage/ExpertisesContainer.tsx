@@ -3,9 +3,13 @@ import { IAppStyledProps } from '../../../types/IAppStyledProps';
 import { size } from '../../../styles/vars';
 import React from 'react';
 import { DiHtml5 } from 'react-icons/di';
+import ExpertiseCard from '../../Expertises/ExpertiseCard';
+import Experience from '../../../models/Experience';
+import { withTranslation } from '../../../../i18n';
+import { WithTranslation } from 'next-i18next';
 
-interface Props {
-    expertisesImagesURL: string[]
+interface Props extends WithTranslation {
+  experiences: Experience[]
 }
 export const ExpertisesContainer = styled.div`
   display: flex;
@@ -57,19 +61,19 @@ export const ExpertisesContainer = styled.div`
   }
 `;
 
-const ExpertiseCards = ({ expertisesImagesURL }: Props) => {
+const ExpertiseCards = ({ experiences: expertises, t }: Props) => {
 
-    return (
-        <ExpertisesContainer>
-            <h3>Built Using</h3>
-            <div className="expertises">
-                {expertisesImagesURL.map((expertise, i) => <div key={i} className="expertise">
-                    <DiHtml5 />
-                </div>
-                )}
-            </div>
-        </ExpertisesContainer>
-    )
+  return (
+    <ExpertisesContainer>
+      <h3>{t("built-using")}</h3>
+      <div className="expertises">
+        {expertises.map((expertise, i) => <div key={i} className="expertise">
+          <ExpertiseCard experience={expertise} />
+        </div>
+        )}
+      </div>
+    </ExpertisesContainer>
+  )
 }
 
-export default ExpertiseCards
+export default withTranslation("utils")(ExpertiseCards)

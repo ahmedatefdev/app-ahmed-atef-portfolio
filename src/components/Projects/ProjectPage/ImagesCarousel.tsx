@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { size } from '../../../styles/vars';
 
 interface Props {
-    imagesURLS: string[]
+  imagesURLS: string[]
 }
 const ImagesCarouselContainer = styled.div`
   width: 100%;
   margin-bottom: 3rem;
-
+  border-radius:10px;
+  overflow:hidden;
   img {
     width: 100%;
     height: 600px;
@@ -28,13 +29,13 @@ const ImagesCarouselContainer = styled.div`
 
 `;
 const ImagesCarousel = ({ imagesURLS }: Props) => {
-    return (
-        <ImagesCarouselContainer >
-            <Carousel autoplay>
-                {imagesURLS.map((url, i) => <img src={url} key={i} />)}
-            </Carousel>
-        </ImagesCarouselContainer>
-    )
+  return (
+    <ImagesCarouselContainer >
+      <Carousel autoplay arrows={true} draggable>
+        {imagesURLS.map((url, i) => <img src={url} key={i} />)}
+      </Carousel>
+    </ImagesCarouselContainer>
+  )
 }
 
 export default ImagesCarousel

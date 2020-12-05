@@ -4,8 +4,8 @@ import { size } from '../styles/vars'
 import { IAppStyledProps } from '../types/IAppStyledProps'
 
 interface Props {
-    imageUrl: string
-    title: string
+    imageUrl?: string
+    title?: string
 }
 
 const InfoCardContainer = styled.div`
@@ -15,10 +15,11 @@ const InfoCardContainer = styled.div`
     position: relative;
     width: 20em;
     height:12em;
+    border-radius: 5px;
     cursor:pointer;
     
     @media  (min-width: ${size.tablet}){
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         width: 25em;
         height:15em;
     }
@@ -100,7 +101,8 @@ const Info = styled.div`
             align-items: center;
             justify-content: center;
             font-size: 1.3em;
-            height: 4rem;
+            min-height: 4rem;
+            height:fit-content;
             width: 75%;
             border-radius: 3px;
             padding: 0 1rem 0;
@@ -109,21 +111,50 @@ const Info = styled.div`
             color: ${({ theme }: IAppStyledProps) => theme.text};
         }   
     }
-
+  
 `
+const BottomTitle = styled.h2`
+    display:none;
+    text-align:center;
+    color: ${({ theme }: IAppStyledProps) => theme.text};
+    z-index:1;
+    padding:0;
+    margin:0;
+    margin-top:5px;
 
+    @media (max-width: ${size.tablet}){
+        display: block;
+    }
+`
+const OuterContainer = styled.div`
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    flex-wrap:nowrap;
+    @media (max-width: ${size.tablet}){
+        background-color: rgba(56, 148, 130, 0.28);
+        padding: 5px;
+        border-radius: 5px;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+`
 const InfoCard = ({ imageUrl, title }: Props) => {
     return (
-        <InfoCardContainer className="info-card">
-            <Image className="image">
-                <img src={imageUrl} alt="images" />
-            </Image>
-            <Info className="info">
-                <div className="info-wrap">
-                    <h2 className="title">{title}</h2>
-                </div>
-            </Info>
-        </InfoCardContainer>
+        <OuterContainer>
+            <InfoCardContainer className="info-card">
+                <Image className="image">
+                    <img src={imageUrl || "https://cdn.lowgif.com/full/506a8fa75e627283-carsten-sachse-webdesign-blog-css-preloader.gif"} alt="images" />
+                </Image>
+                <Info className="info">
+                    <div className="info-wrap">
+                        <h2 className="title">{title}</h2>
+                    </div>
+                </Info>
+            </InfoCardContainer>
+            <BottomTitle className="bottom-title">{title || "loading..."}</BottomTitle>
+        </OuterContainer>
     )
 }
 
