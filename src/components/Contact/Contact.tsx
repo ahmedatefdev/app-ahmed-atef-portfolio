@@ -14,6 +14,7 @@ interface Props extends WithTranslation {
 const ContactContainer = styled.section`
         padding: 3em 0;
         background-color :${({ theme }: IAppStyledProps) => theme.body};
+        transition: all 0.2s linear;
 
         .container {
             max-width: 1200px;

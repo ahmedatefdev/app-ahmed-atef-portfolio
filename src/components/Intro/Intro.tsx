@@ -1,7 +1,5 @@
-import { TFunction } from "next-i18next"
 import React from "react"
 import styled from "styled-components"
-import { withTranslation } from "../../../i18n"
 import { IAppStyledProps } from "../../types/IAppStyledProps"
 
 import pat3 from '../../img/pattern11.png'

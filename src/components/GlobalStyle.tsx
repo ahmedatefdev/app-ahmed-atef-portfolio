@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-tap-highlight-color: transparent;
         -webkit-overflow-scrolling: touch;
+        transition: all 0.5s linear;
 
         *,
         *::before,
@@ -29,6 +30,9 @@ const GlobalStyle = createGlobalStyle`
     }
     *{
         margin:0em;
+        transition: color  0.6s linear;
+        transition: background 0.6s linear;
+
     }
     body {
        
