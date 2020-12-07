@@ -1,6 +1,6 @@
 # Ahmed Atef Portfolio 👨‍💻
 
-A Portfolio and personal blog of developer Ahmed Atef that contains some of his experiences, projects and blog data
+**Portfolio and personal blog** of developer Ahmed Atef that contains some of his experiences, projects and blog data
 
 ## Add env file
 

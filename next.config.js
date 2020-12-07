@@ -2,7 +2,7 @@ const withPWA = require("next-pwa");
 
 module.exports = withPWA({
   pwa: {
-    dest: "public"
+    dest: "public",
   },
   publicRuntimeConfig: {
     API_URL: process.env.API_URL,

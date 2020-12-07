@@ -48,14 +48,13 @@ const Contact = ({ t }: Props) => {
                     data: data
                 })
                     .then((val) => {
-                        console.log("🚀 submitForm ~ val", val)
                         form.reset()
                         message.info(t("message-sent"));
                     })
                     .catch((val) => {
                         console.error("🚀 ~ submitForm val", val)
                         message.info(t("message-not-sent"));
-                    }).finally(() => { console.log("try to send mail") })
+                    }).finally(() => { })
             }, [])
 
     return (

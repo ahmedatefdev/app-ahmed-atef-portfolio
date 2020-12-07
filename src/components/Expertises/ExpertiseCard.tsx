@@ -45,7 +45,6 @@ const Title = styled.p`
     color: ${({ theme }: IAppStyledProps) => theme.text};
 `
 const ExpertiseCard = ({ experience }: Props) => {
-    console.log("🚀 ~ file: ExpertiseCard.tsx ~ line 52 ~ ExpertiseCard ~ experience", experience)
     const { experienceTranslations, image } = experience
     const title = useMemo(() => {
         return experienceTranslations.find((trans) => trans.language.short_name === i18n.language)

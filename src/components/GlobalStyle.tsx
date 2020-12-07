@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
         min-height:100vh;
         padding: 0;
         margin: 0;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Nunito','Tajawal', sans-serif;
         font-size: 15px;
         font-weight: 400;
         -webkit-font-smoothing: antialiased;

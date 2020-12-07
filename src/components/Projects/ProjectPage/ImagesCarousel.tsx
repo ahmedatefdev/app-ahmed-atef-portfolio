@@ -2,6 +2,7 @@ import { Carousel } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
 import { size } from '../../../styles/vars';
+import { IAppStyledProps } from '../../../types/IAppStyledProps';
 
 interface Props {
   imagesURLS: string[]
@@ -26,12 +27,21 @@ const ImagesCarouselContainer = styled.div`
       height: 400px;
     }
   }
+  .dot-changer{
+    background-color: rgba(0,0,0,.3);
+    border-radius: 5px;
+    height:fit-content;
+    padding:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
 `;
 const ImagesCarousel = ({ imagesURLS }: Props) => {
   return (
     <ImagesCarouselContainer >
-      <Carousel autoplay arrows={true} draggable>
+      <Carousel autoplay arrows={true} draggable dots={{ className: "dot-changer" }} nextArrow={<h1>Next</h1>} prevArrow={<div>{"<<<<>>>>>"}</div>}>
         {imagesURLS.map((url, i) => <img src={url} key={i} />)}
       </Carousel>
     </ImagesCarouselContainer>

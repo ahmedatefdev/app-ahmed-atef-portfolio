@@ -28,7 +28,7 @@ const FullProjectPageDetails = () => {
             <p className="md-description">
                 <ReactMarkdown plugins={[gfm]} children={`${projectTranslation.md_description}`} />
             </p>
-            <ExpertiseCards experiences={experiences} />
+            {(experiences !== null && experiences !== undefined && experiences.length > 0) && <ExpertiseCards experiences={experiences} />}
         </>
     )
 }

@@ -14,7 +14,6 @@ const MainContainer = styled(Container)`
 `
 
 const ProjectsStackLoading = (props: Props) => {
-    console.log("🚀 ~ file: ProjectsStackLoading.tsx ~ line 32 ~ ProjectsStackLoading ~ ProjectsStackLoading")
     return (
         <MainContainer>
             <TitleLoad>

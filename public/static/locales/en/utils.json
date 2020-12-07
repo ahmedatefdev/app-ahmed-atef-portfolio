@@ -15,5 +15,7 @@
   "message-not-sent": "sending failed",
   "contact-me": "Contact Me",
   "sent": "Send",
-  "clear": "Clear"
+  "clear": "Clear",
+  "not-found-project": "Project Not Found",
+  "to-home": "return to home"
 }

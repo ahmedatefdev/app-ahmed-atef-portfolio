@@ -8,7 +8,6 @@ import { IAppStyledProps } from "../types/IAppStyledProps"
 
 const FooterContainer = styled.footer`
     padding: 25px 10px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -10,7 +10,6 @@ const LanguageSwitcher = () => {
     const changeLanguage = useCallback(
         async (lang: string) => {
             await i18n.changeLanguage(lang)
-            console.log(`new lang ${lang}`);
         },
         [i18n.language],
     )

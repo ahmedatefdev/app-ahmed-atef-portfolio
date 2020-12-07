@@ -7,7 +7,7 @@ axios.defaults.baseURL = publicRuntimeConfig.API_URL;
 
 axios.interceptors.request.use(
   (request) => {
-    console.log(request);
+    // console.log(request);
     return request;
   },
   (error) => {

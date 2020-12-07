@@ -44,7 +44,11 @@ const Page = ({ children, title = 'Ahmed Atef Portfolio', description = "Ahmed a
                 />
                 <link href="/favicons/site.webmanifest" rel="manifest" />
                 <link href="/favicons/favicon.ico" rel="shortcut icon" />
-                <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;1,300;1,400;1,600;1,700|Bitter|Roboto+Slab|Open+Sans:400,800&display=swap" rel="stylesheet"></link>
+
+                <link rel="preconnect" href="https://fonts.gstatic.com">
+                </link>
+                <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet" ></link>
+
             </HEAD>
             <GlobalStyle />
             {children}

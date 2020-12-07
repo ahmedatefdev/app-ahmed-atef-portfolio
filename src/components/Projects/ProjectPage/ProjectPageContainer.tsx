@@ -11,6 +11,8 @@ export const ProjectPageContainer = styled.div`
   .container {
     max-width: 1150px;
     margin: 0 auto;
+    text-align:center;
+    min-height:50vh;
   }
 
   h1 {
@@ -34,7 +36,7 @@ export const ProjectPageContainer = styled.div`
     padding:${spacing.small};
     border-radius: 5px;
     text-align:center;
-    
+    min-width:100%;
     background-blend-mode: multiply;
     background-image: url(${pat3}) ;
     background-color: ${({ theme }: IAppStyledProps) => theme.darkerAccent} ;
