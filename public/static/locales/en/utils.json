@@ -17,5 +17,7 @@
   "sent": "Send",
   "clear": "Clear",
   "not-found-project": "Project Not Found",
-  "to-home": "return to home"
+  "to-home": "return to home",
+  "language-notification-title": "Current language is (English)",
+  "language-notification-description": "you can change the language anytime from the nav bar"
 }

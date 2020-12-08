@@ -1,14 +1,15 @@
-import { Modal } from 'antd'
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { Modal, notification } from 'antd'
+import { WithTranslation } from 'next-i18next';
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components';
-import { changeLanguageAction, fetchProjectsAction } from '../redux/actions/actions';
+import { withTranslation } from '../../i18n';
 import { LanguageNames } from '../redux/types/ILanguageState';
-import IState from '../redux/types/IState';
 import { IAppStyledProps } from '../types/IAppStyledProps';
 
 
 const LangModel = styled(Modal)`
+    width: 95vw;
+
     .ant-modal-body{
         background-color: ${({ theme }: IAppStyledProps) => theme.body};
         *{
@@ -32,19 +33,35 @@ const LangModel = styled(Modal)`
     }
 `
 
-interface Props {
+interface Props extends WithTranslation {
     visible: boolean,
     changeLang: (langName: LanguageNames) => void
 }
-const LanguageChosenModel = ({ visible, changeLang }: Props) => {
-    const [langChosen, setLangChosen] = useState(false)
-    const setNewLang = useCallback((langName: LanguageNames) => { changeLang(langName); setLangChosen(true); }, [])
+const LanguageChosenModel = ({ changeLang, t }: Props) => {
+    const [langChosen, setLangChosen] = useState(null)
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+    const [visible, setVisible] = useState(true)
+
+
+    const Notification = useCallback(() => {
+        // const message = langChosen === "ar" ? "اللغة الحالية (العربيه)" : "Current language is (English)";
+        const description = langChosen === "ar" ? "يمكنك تغيير اللغة في أي وقت من شريط التنقل" : "you can change the language anytime from the nav bar"
+        notification.open({
+            message: "",
+            description,
+            duration: 3,
+            style: { backgroundColor: "#1F1F1F", color: "white" }
+        });
+    }, [langChosen])
+    const setNewLang = useCallback((langName: LanguageNames) => { setLangChosen(langName); setShowSuccessMessage(true); setVisible(false); }, [])
     return (
         <>
             <LangModel
                 centered
                 visible={visible}
-                afterClose={() => { if (!langChosen) setNewLang("en") }}
+                afterClose={() => {
+                    changeLang(langChosen || "en");
+                }}
                 okText={"العربية"}
                 cancelText={"English"}
                 onOk={() => setNewLang("ar")}
@@ -52,9 +69,10 @@ const LanguageChosenModel = ({ visible, changeLang }: Props) => {
             >
                 <h3 style={{ textAlign: "center" }}> {`What language do you want to browse this site in?`}</h3>
                 <h3 style={{ textAlign: "center" }}>{"اي لغة تريد ان تتصفح هذا الموقع بها؟"}</h3>
+                {showSuccessMessage && Notification()}
             </LangModel>
         </ >
     )
 }
 
-export default LanguageChosenModel
+export default withTranslation("utils")(LanguageChosenModel)

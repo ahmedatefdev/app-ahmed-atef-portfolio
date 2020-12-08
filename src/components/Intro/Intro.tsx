@@ -10,7 +10,7 @@ import IntroText from "./IntroText"
 const IntroContainer = styled.div`
     width: 100%;
     padding: 125px 20px;
-
+    min-height: calc(100vh - 55px);
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -15,7 +15,9 @@
   "message-not-sent": "فشل الارسال",
   "contact-me": "تواصل معي",
   "sent": "ارسال",
-  "clear": "تفريغ الخانات"
-  ,"not-found-project": "لا يمكن الوصول لهذا المشروع"
-  ,"to-home": "الرجوع للرئيسية"
+  "clear": "تفريغ الخانات",
+  "not-found-project": "لا يمكن الوصول لهذا المشروع",
+  "to-home": "الرجوع للرئيسية",
+  "language-notification-title": "اللغة الحالية (العربيه)",
+  "language-notification-description": "يمكنك تغيير اللغة في أي وقت من شريط التنقل"
 }
