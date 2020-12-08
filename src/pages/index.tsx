@@ -5,14 +5,18 @@ import Expertises from '../components/Expertises/Expertises';
 import Footer from '../components/Footer';
 import Contact from '../components/Contact/Contact';
 import Page from '../components/Page';
+import SectionNav from '../components/Intro/SectionNav';
+import { withTranslation } from '../../i18n';
+import { WithTranslation } from 'next-i18next';
 
-interface Props { }
+interface Props extends WithTranslation { }
 
-const HomePage = (props: Props) => {
+const HomePage = ({ t }: Props) => {
   return (
-    <Page>
+    <Page title={`${t("name")} ${t("home")}`} >
       <Navbar />
       <Intro />
+      <SectionNav />
       <Expertises />
       <Contact />
       <Footer />
@@ -20,4 +24,4 @@ const HomePage = (props: Props) => {
   );
 };
 
-export default HomePage;
+export default withTranslation("pages-names")(HomePage);

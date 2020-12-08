@@ -23,7 +23,7 @@ const Expertises = ({ t }: Props) => {
         dispatch(fetchExpertisesAction())
     }, [])
     return (
-        <ExpertisesContainer>
+        <ExpertisesContainer id="experience">
             <SectionTitle >{FistCharacterToUppercase(t("experiences"))}</SectionTitle>
             {
                 loading ?

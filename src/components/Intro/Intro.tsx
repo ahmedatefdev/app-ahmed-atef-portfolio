@@ -19,7 +19,7 @@ const IntroContainer = styled.div`
     background-blend-mode: multiply;
     background-image: url(${pat3});
     background-color: ${({ theme }: IAppStyledProps) => theme.body};
-    filter:brightness(120%) contrast(110%);
+    filter:brightness(120%) contrast(110%) drop-shadow(0px 0px 5px ${({ theme }: IAppStyledProps) => theme.accent});
     
     @media  (max-width: ${size.tablet}){
       padding: 125px 0;

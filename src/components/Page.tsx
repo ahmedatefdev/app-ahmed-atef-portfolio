@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import HEAD from 'next/head'
 import GlobalStyle from './GlobalStyle'
 import { BackTop } from 'antd'
 import { IoIosArrowDropupCircle } from 'react-icons/io'
+import LanguageChosenModel from './LanguageChosenModel'
+import { useDispatch, useSelector } from 'react-redux'
+import IState from '../redux/types/IState'
+import { changeLanguageAction } from '../redux/actions/actions'
+import { LANG_KEY } from '../redux/saga/Language'
 
 interface Props {
     children: any
@@ -12,6 +17,18 @@ interface Props {
 
 
 const Page = ({ children, title = 'Ahmed Atef Portfolio', description = "Ahmed atef portfolio made by next.js and antd with styled components" }: Props) => {
+    const { languageStored } = useSelector((state: IState) => state.language)
+    const [showLangModel, setShowLangModel] = useState(false)
+    const dispatch = useDispatch()
+
+    const changeLang = useCallback((lang: string) => { dispatch(changeLanguageAction(lang)); setShowLangModel(false) }, [])
+
+    useEffect(() => {
+        const storedLang = localStorage?.getItem(LANG_KEY)
+        if (!languageStored && !storedLang) setShowLangModel(true)
+        else if (storedLang && !languageStored) dispatch(changeLanguageAction(storedLang));
+    }, [])
+
     return (
         <>
             <HEAD>
@@ -52,6 +69,7 @@ const Page = ({ children, title = 'Ahmed Atef Portfolio', description = "Ahmed a
             </HEAD>
             <GlobalStyle />
             {children}
+            { !languageStored && <LanguageChosenModel visible={showLangModel} changeLang={changeLang} />}
             <BackTop>
                 <div style={{
                     height: 50,

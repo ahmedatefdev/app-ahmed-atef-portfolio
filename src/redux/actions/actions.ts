@@ -1,6 +1,7 @@
 import {
   BLOG_ACTION_TYPES,
   EXPERTISE_ACTION_TYPES,
+  LANGUAGE_ACTION_TYPES,
   PROJECT_ACTION_TYPES,
   THEME_ACTION_TYPES
 } from "../types/ActionTypes";
@@ -26,4 +27,8 @@ export const fetchSummariesAction = (): IAction => {
 };
 export const fetchArticlesAction = (): IAction => {
   return { type: BLOG_ACTION_TYPES.FETCH_BLOG_ARTICLES };
+};
+
+export const changeLanguageAction = (langName: string): IAction => {
+  return { type: LANGUAGE_ACTION_TYPES.CHANGE_LANGUAGE, payload: langName };
 };

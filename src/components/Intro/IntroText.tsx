@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { withTranslation } from '../../../i18n'
 import { size } from '../../styles/vars'
 import { IAppStyledProps } from '../../types/IAppStyledProps'
+import SectionNav from './SectionNav'
 
 const IntroTextContainer = styled.div`
       width: 500px;

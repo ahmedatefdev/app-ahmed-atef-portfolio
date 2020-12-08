@@ -1,18 +1,23 @@
 import { Button } from 'antd'
 import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { i18n } from '../../../i18n'
+import { changeLanguageAction } from '../../redux/actions/actions'
 
 
 type ButtonTypes = "primary" | "default" | "text" | "link" | "ghost" | "dashed"
 
 const LanguageSwitcher = () => {
     const [langName, setLangName] = useState(i18n?.language || "en")
+    const dispatch = useDispatch()
+    const changeLang = useCallback((lang: string) => { dispatch(changeLanguageAction(lang)); }, [])
+
     const changeLanguage = useCallback(
         async (lang: string) => {
             await i18n.changeLanguage(lang)
-        },
-        [i18n.language],
-    )
+            changeLang(lang)
+        }, [i18n.language])
+
     useEffect(() => { setLangName(i18n.language) }, [i18n.language])
 
     const ChangeTypeByLanguage = useCallback(
