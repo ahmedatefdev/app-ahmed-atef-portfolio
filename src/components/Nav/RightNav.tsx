@@ -13,16 +13,20 @@ import { Ul } from './Ul';
 import { WithTranslation } from 'next-i18next';
 import { FistCharacterToUppercase } from '../../helper';
 import getConfig from "next/config";
+import { Popover } from 'antd';
+import { ResumeContent } from './ResumesUL';
 const { publicRuntimeConfig } = getConfig();
 interface Props extends WithTranslation {
   open: boolean
   closeNav: () => void
 
 }
+
 const RightNav = ({ open, t, closeNav }: Props) => {
   const dispatch = useDispatch()
   const themeName = useSelector((state: IState) => state.theme.themeName)
   const ThemeChanger = useCallback(() => { dispatch(setTheme()) }, [themeName])
+
 
   return (
     <Ul open={open} onClick={closeNav}>
@@ -41,7 +45,7 @@ const RightNav = ({ open, t, closeNav }: Props) => {
           <CustomButton icon={<StarFilled />} type="link" >{FistCharacterToUppercase(t("blog"))}</CustomButton>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <div className="resume">
           <a
             href={publicRuntimeConfig.RESUME_URL}
@@ -51,6 +55,11 @@ const RightNav = ({ open, t, closeNav }: Props) => {
             <PaperClipOutlined /> {FistCharacterToUppercase(t("resume"))}
           </a>
         </div>
+      </li> */}
+      <li>
+        <Popover content={ResumeContent} trigger="click" className="">
+          <CustomButton icon={<PaperClipOutlined />} type="link" >{FistCharacterToUppercase(t("resume"))}</CustomButton>
+        </Popover>
       </li>
       <li >
         <div className="theme-toggle">
@@ -65,6 +74,8 @@ const RightNav = ({ open, t, closeNav }: Props) => {
           <LanguageSwitcher />
         </div>
       </li>
+
+
     </Ul >
   )
 }

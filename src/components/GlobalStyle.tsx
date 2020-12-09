@@ -100,7 +100,24 @@ const GlobalStyle = createGlobalStyle`
         margin: ${spacing.large} 0;
     }
     
-   
+   .ant-popover{
+       *{
+            background-color:${(props: IAppStyledProps) => { return props.theme.body }};
+            color: ${(props: IAppStyledProps) => { return props.theme.text }};
+            text-align:center;
+            border-color:${(props: IAppStyledProps) => { return props.theme.body }};
+       }
+       .ant-popover-content{
+            background-color:${(props: IAppStyledProps) => { return props.theme.body }};
+            color: ${(props: IAppStyledProps) => { return props.theme.text }};
+            text-align:center;
+            .ant-popover-arrow{
+            border-color:${(props: IAppStyledProps) => { return props.theme.body }};
+            border-top-color:${(props: IAppStyledProps) => { return props.theme.body }};
+
+            }
+       }
+   }
 
     @media (min-width: 768px) {
         body {

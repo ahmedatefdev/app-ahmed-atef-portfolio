@@ -7,8 +7,8 @@ import { IAppStyledProps } from '../../types/IAppStyledProps'
 // const per = require('../../img/per23.png');
 
 const IntroAvatarContainer = styled.div`
-      width: 22rem;
-      height:22rem;
+      width: 350px;
+      height:350px;
       position: relative;
       border-radius: 50%;
       padding:${spacing.normal};
@@ -33,7 +33,7 @@ const IntroAvatarContainer = styled.div`
         /* top:18.2%; */
         /* left:14.5%; */
         bottom: 0;
-        right: 15px;
+        right: 14px;
         width: 18rem;
       }
 
