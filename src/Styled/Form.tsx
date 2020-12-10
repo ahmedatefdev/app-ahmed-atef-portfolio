@@ -2,32 +2,13 @@ import styled, { keyframes } from "styled-components"
 import { size, spacing } from "../styles/vars"
 import { IAppStyledProps } from "../types/IAppStyledProps"
 
-export const errorAnimation = keyframes`
-/* 0 & 100% might not be needed */
-  25% {
-    filter: brightness(100%) contrast(100%) drop-shadow(0px 2px 1px #E22440);
-
-  }
-  50% {
-    filter: brightness(200%) contrast(200%) drop-shadow(0px 2px 1px #E22440);
-
-  }
-  75% {
-    filter: brightness(300%) contrast(300%) drop-shadow(0px 2px 1px #E22440);
-  }
-  
-`
-
 export const FormError = styled.div<{ visible: boolean }>`
-    /* color:  ${({ theme }: IAppStyledProps) => theme.text}; */
     color:#ffb1bd;
     font-style: italic;
     display: ${({ visible }) => visible ? "block" : "none"};
     margin:  0 0 0 ${spacing.extraSmall};
     text-align:left;
     font-size: 15px;
-    /* filter: brightness(300%) contrast(150%); */
-    /* animation: ${errorAnimation} 1.5s linear infinite; */
 `
 export const RequiredStar = styled.span`
     color: lightcoral;

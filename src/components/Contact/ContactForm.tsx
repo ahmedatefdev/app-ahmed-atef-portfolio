@@ -34,9 +34,10 @@ const ContactForm = ({ t, submitForm }: Props) => {
             setError(newErrors)
         }, [])
 
-    const labelStyle = useMemo(() => ({
+    const languageStyle = useMemo(() => ({
         left: isRight ? "unset" : 0,
-        right: isRight ? 0 : "unset"
+        right: isRight ? 0 : "unset",
+        textAlign: (isRight ? "right" : "left") as any
     }), [isRight])
 
     return (
@@ -50,23 +51,23 @@ const ContactForm = ({ t, submitForm }: Props) => {
                 <input type="hidden" name="bot-field" />
                 <input type="hidden" name="form-name" value="contact" />
                 <FormGroup >
-                    <input type="text" name="name" id="name" />
-                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("name"))}</label>
+                    <input style={languageStyle} type="text" name="name" id="name" />
+                    <label style={languageStyle}><RequiredStar />{FistCharacterToUppercase(t("name"))}</label>
                     <FormError visible={error.name}>{t("name-error")}</FormError>
                 </FormGroup>
                 <FormGroup >
-                    <input type="text" name="email" id="email" />
-                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("email"))}</label>
+                    <input style={languageStyle} type="text" name="email" id="email" />
+                    <label style={languageStyle}><RequiredStar />{FistCharacterToUppercase(t("email"))}</label>
                     <FormError visible={error.email}>{t("email-error")}</FormError>
                 </FormGroup>
                 <FormGroup >
-                    <input type="text" name="subject" id="subject" />
-                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("subject"))}</label>
+                    <input style={languageStyle} type="text" name="subject" id="subject" />
+                    <label style={languageStyle}><RequiredStar />{FistCharacterToUppercase(t("subject"))}</label>
                     <FormError visible={error.subject}>{t("subject-error")}</FormError>
                 </FormGroup>
                 <FormGroup >
-                    <textarea name="message" id="message" rows={5} />
-                    <label style={labelStyle}><RequiredStar />{FistCharacterToUppercase(t("message"))}</label>
+                    <textarea style={languageStyle} name="message" id="message" rows={5} />
+                    <label style={languageStyle}><RequiredStar />{FistCharacterToUppercase(t("message"))}</label>
                     <FormError visible={error.message}>{t("message-error")}</FormError>
                 </FormGroup>
                 <button type="submit">{t("sent")}</button>

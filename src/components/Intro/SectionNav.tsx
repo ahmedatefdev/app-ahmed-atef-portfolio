@@ -32,7 +32,7 @@ const NavButton = styled(Button)`
 interface Props extends WithTranslation { }
 const SectionNav = ({ t }: Props) => (
     <SectionNavContainer>
-        <Link href="#experience">
+        <Link href="#experience" as="" shallow>
             <NavButton icon={<DingtalkOutlined />}
                 type="primary" size="large"  >{FistCharacterToUppercase(t("experiences"))}
             </NavButton>
