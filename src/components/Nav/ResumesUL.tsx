@@ -25,7 +25,7 @@ const ResumesUL = styled.ul`
 `;
 export const ResumeContent = (
   <ResumesUL>
-    <li>
+    {publicRuntimeConfig.RESUME_URL_ENGLISH && <li>
       <a
         href={publicRuntimeConfig.RESUME_URL_ENGLISH}
         rel="noopener noreferrer"
@@ -33,16 +33,18 @@ export const ResumeContent = (
       >
         <FileTextOutlined /> English Resume
         </a>
-    </li>
-    <hr />
-    <li>
-      <a
-        href={publicRuntimeConfig.RESUME_URL_ARABIC}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <FileSearchOutlined /> سيرة ذاتية بالعربية
+    </li>}
+    { publicRuntimeConfig.RESUME_URL_ARABIC && <>
+      <hr />
+      <li>
+        <a
+          href={publicRuntimeConfig.RESUME_URL_ARABIC}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <FileSearchOutlined /> سيرة ذاتية بالعربية
         </a>
-    </li>
+      </li>
+    </>}
   </ResumesUL>
 );

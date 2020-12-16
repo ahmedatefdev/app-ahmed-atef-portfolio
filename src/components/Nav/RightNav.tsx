@@ -45,22 +45,11 @@ const RightNav = ({ open, t, closeNav }: Props) => {
           <CustomButton icon={<StarFilled />} type="link" >{FistCharacterToUppercase(t("blog"))}</CustomButton>
         </Link>
       </li>
-      {/* <li>
-        <div className="resume">
-          <a
-            href={publicRuntimeConfig.RESUME_URL}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <PaperClipOutlined /> {FistCharacterToUppercase(t("resume"))}
-          </a>
-        </div>
-      </li> */}
-      <li>
+      { (publicRuntimeConfig.RESUME_URL_ENGLISH || publicRuntimeConfig.RESUME_URL_ARABIC) && <li>
         <Popover content={ResumeContent} trigger="click" className="">
           <CustomButton icon={<PaperClipOutlined />} type="link" >{FistCharacterToUppercase(t("resume"))}</CustomButton>
         </Popover>
-      </li>
+      </li>}
       <li >
         <div className="theme-toggle">
           <DarkModeToggle
